@@ -11,8 +11,12 @@ const auth = async (req, res, next) => {
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET)
         const user = await User.findById(payload.userId).select("-password")
-        req.user = user
-        next()
+        if (user) {
+            req.user = user
+            next()
+        } else {
+            throw new UnauthenticatedError("User not found")
+        }
     } catch (err) {
         throw new UnauthenticatedError("Authentification invalid")
     }
