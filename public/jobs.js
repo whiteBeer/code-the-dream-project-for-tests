@@ -33,14 +33,20 @@ export const handleJobs = () => {
                 message.textContent = "";
                 showAddEdit(e.target.dataset.id);
             } else if (e.target.classList.contains("deleteButton")) {
-                const response = await fetch(`/api/v1/jobs/${e.target.dataset.id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                showJobs();
+                try {
+                    const response = await fetch(`/api/v1/jobs/${e.target.dataset.id}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+                    message.textContent = "The job entry was deleted.";
+                    showJobs();
+                } catch (err) {
+                    console.log(err);
+                    message.textContent = "A communication error occurred.";
+                }
             }
         }
     });
