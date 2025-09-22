@@ -25,9 +25,7 @@ app.use(xss())
 
 const connectDB = require("./db/connect")
 
-app.get("/", (req, res) => {
-    res.send("jobs API")
-})
+app.use(express.static("public"));
 
 // routes
 app.use("/api/v1/auth", authRouter)
