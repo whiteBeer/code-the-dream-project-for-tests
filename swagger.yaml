@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Jobs API
+  description: ''
+  version: 1.0.0
+servers:
+  - url: https://code-the-dream-project-for-tests.onrender.com/api/v1
+tags:
+  - name: login
+    description: Login
+  - name: jobs
+    description: Access to Jobs
+paths:
+  /auth/login:
+    post:
+      tags:
+        - login
+      summary: Login
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /auth/register:
+    post:
+      tags:
+        - login
+      summary: Register
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /jobs:
+    post:
+      tags:
+        - jobs
+      summary: Create Job
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    get:
+      tags:
+        - jobs
+      summary: Get Jobs
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+  /jobs/{id}:
+    get:
+      tags:
+        - jobs
+      summary: Get Job
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+    patch:
+      tags:
+        - jobs
+      summary: Update Job
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      tags:
+        - jobs
+      summary: Delete Job
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+components:
+  schemas: {}
+  securitySchemes: {}
